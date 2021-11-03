@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--    设置log4j配置基于maven依赖与mybatis的链接-->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <!--    使用别名向mybatis配置文件配置内容的方法-->
+<!--    通过指定类的别名以及类的相对存根路径来给xml文件进行引用-->
+    <typeAliases>
+        <typeAlias alias="news" type="org.example.mybatis_Test.output_Student"/>
+    </typeAliases>
+    <!--    优先级:build()方法 > 配置文件中的内容 > property属性中子属性的内容-->
+    <!--    <properties resource="mybatis_Test.properties">-->
+    <!--        <property name="" value=""/>-->
+    <!--    </properties>-->
+    
+<!--    在mybatis的配置文件中创建objectfactory对象工厂初始化文件-->
+    <objectFactory type="org.example.mybatis_object_factory.object_Factory">
+<!--        舒适化对象工厂的属性-->
+<!--        property属性在对象工厂中输出/有效的位置
+            将对象工厂配置的元素属性传入到相对应的这个对象
+        @Override
+        public void setProperties(Properties properties){
+        super.setProperties(properties);
+        System.out.println("输出配置的相对应的属性值:" + properties);
+        this.author = properties.getProperty("author");
+        }-->
+        <property name="author" value="Kazamine_Setukeka"/>
+    </objectFactory>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+<!--                输出或者不输出MySQL的SQL语句的相关配置-->
+<!--                <property name="driver" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>-->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/after_student"/>
+                <property name="username" value="root"/>
+                <property name="password" value="12345678"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+<!--        <mapper resource="org/example/Studentdao/studentdao.xml"/>-->
+<!--        <mapper resource="org/example/mybatis_Test_XML_resources/mybatis_Test.xml"/>-->
+
+<!--        使用mapper映射XML文件所在的包来加载相对应的mapper.XML文件-->
+        <package name="org.example.mybatis_Test_XML_resources"/>
+    </mappers>
+</configuration>
+<!--        SQLserver-->
+<!--        &lt;!&ndash;不输出sql的配置-->
+<!--        <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />&ndash;&gt;-->
+<!--<property name="url" value="jdbc:sqlserver://..." />&ndash;&gt;-->
+<!--        &lt;!&ndash;输出sql的配置&ndash;&gt;-->
+<!--<property name="driver" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />-->
+<!--<property name="url" value="jdbc:log4jdbc:sqlserver://..." />-->

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mybatis_Test_XML_resources.mybatis_Test">
+
+    <insert id="StudentSave">
+        insert into mybatis_sql values (#{ID}, #{Name}, #{Age})
+    </insert>
+<!--        创建第二个mapperMySQL操作的语句-->
+
+    <update id="Studentupdata">
+        -- 使用ID进行对相对应的键值的数据进行更新
+    update mybatis_sql set Name = #{Name}, Age = #{Age} where ID = #{ID}
+    </update>
+
+<!--    创建一条删除语句deleteMySQL语句-->
+    <delete id="Studentdelete">
+        <!--            使用ID对对应的学生进行删除-->
+        delete from mybatis_sql where ID = #{ID}
+    </delete>
+<!--大括号的参数可以为任意的字符串-->
+<!--    用于测试delete语句与insert语句与updata语句的相同性-->
+<!--    <insert id="Student_delete_insert">-->
+<!--&lt;!&ndash;            使用ID对对应的学生进行删除&ndash;&gt;-->
+<!--    delete from mybatis_sql where ID = #{ABC}-->
+<!--    </insert>-->
+
+<!--    创建查找数据的SQL语句映射-->
+<!--    使用resultType="map"执行mybatis映射输出关系参数为Map映射输出-->
+<!--    修改resultType属性使其映射为output_Student的JAVA对象-->
+    <select id="selectStudent" resultType="org.example.mybatis_Test.output_Student">
+        select ID ID, Name Name, Age Age from mybatis_sql where ID = #{ID}
+    </select>
+</mapper>

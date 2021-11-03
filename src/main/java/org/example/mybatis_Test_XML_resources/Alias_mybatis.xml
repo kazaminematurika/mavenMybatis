@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--通过引用mybatis配置文件设置的别名引用对象以及resources资源文件-->
+<mapper namespace="org/example/mybatis_Test_XML_resources/Alias_mybatis">
+<!--    引用基于mybatis.xml配置文件的别名进行对类的引用-->
+    <select id="get_new_xml_names_stdent" resultType="news">
+        select ID ID, Age Age, Name Name from mybatis_sql where ID = #{ID}
+    </select>
+<!--    通过直接使用类的@Alias("alias_name")别名定义方法对类进行引用-->
+    <select id="get_new_class_name_student" resultType="class_news">
+        select ID ID, Age Age, Name Name from mybatis_sql where ID = #{ID}
+    </select>
+</mapper>

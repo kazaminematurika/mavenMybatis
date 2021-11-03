@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.Studentdao.Studentdao">
+    <select id="selectStudentbyID" resultType="org.example.Student.Student">
+        select ID, Name, Age from mybatis_sql where ID = "111111"
+    </select>
+</mapper>
