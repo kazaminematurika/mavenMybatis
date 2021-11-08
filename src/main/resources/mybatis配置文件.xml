@@ -44,11 +44,11 @@
         </environment>
     </environments>
     <mappers>
-<!--        <mapper resource="org/example/Studentdao/studentdao.xml"/>-->
+        <mapper resource="org/example/Studentdao/studentdao.xml"/>
 <!--        <mapper resource="org/example/mybatis_Test_XML_resources/mybatis_Test.xml"/>-->
 
 <!--        使用mapper映射XML文件所在的包来加载相对应的mapper.XML文件-->
-        <package name="org.example.mybatis_Test_XML_resources"/>
+<!--        <package name="org.example.mybatis_Test_XML_resources"/>-->
     </mappers>
 </configuration>
 <!--        SQLserver-->
